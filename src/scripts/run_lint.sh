@@ -17,7 +17,11 @@ npm install -g tap-junit
 FILES=/tmp/super-linter.report/*
 for f in $FILES
 do
-    FILENAME=$(basename "$f")
+    FILE=$(basename "$f")
+    NAME=$(basename "$f" .tap)
     echo "Converting file: $FILENAME from $f"
-    tap-junit -o /tmp/test_results -n "$FILENAME" -i "$FILENAME"
+    tap-junit -o /tmp/test_results -n "$NAME" -i "$FILE"
 done
+echo "Showing test results"
+cd /tmp/test_results
+ls
