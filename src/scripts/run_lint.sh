@@ -13,7 +13,7 @@ set -e
 cp -R "$PWD/$SCAN_DIR/super-linter.report" /tmp/artifacts/reports
 # Convert reports to JUNIT
 echo Converting Test Results to JUNIT
-cd /tmp/super-linter.report || exit 1
+cd /tmp/artifacts/test_results || exit 1
 ls
 npm install -g tap-junit
 FILES=/tmp/super-linter.report/*
