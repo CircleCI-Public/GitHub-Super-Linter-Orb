@@ -6,9 +6,6 @@ description: >
 docker:
   - image: 'github/super-linter:<<parameters.version>>'
 
-environment:
-  RUN_LOCAL: true
-
 parameters:
   version:
     type: string
@@ -26,5 +23,7 @@ steps:
   - run:
       name: GitHub Super-Linter
       command: |
+        RUN_LOCAL=true
         DEFAULT_WORKSPACE=<<parameters.dir>>
-        sh /action/lib/linter.sh
+        PATH="${PATH}:/node_modules/.bin:/var/cache/dotnet/tools:/usr/share/dotnet"
+        bash /action/lib/linter.sh
