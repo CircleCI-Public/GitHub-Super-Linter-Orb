@@ -29,17 +29,8 @@ steps:
   - checkout
   - run:
       name: GitHub Super-Linter
-      command: |
-        # Load Paths
-        PATH="${PATH}:/node_modules/.bin:/var/cache/dotnet/tools:/usr/share/dotnet"
-        # Set directory
-        export DEFAULT_WORKSPACE=$(echo $PWD/$SCAN_DIR)
-        echo Scanning $DEFAULT_WORKSPACE
-        # Create report directory
-        mkdir $PWD/$SCAN_DIR/super-linter.report
-        # Run Linter
-        bash /action/lib/linter.sh
-        # Copy reports
-        cp -R $PWD/$SCAN_DIR/super-linter.report /tmp/super-linter.report
+      command: <<include(scripts/run_lint.sh)>>
   - store_artifacts:
       path: /tmp/super-linter.report
+  - store_tests:
+      path: /tmp/test_results
