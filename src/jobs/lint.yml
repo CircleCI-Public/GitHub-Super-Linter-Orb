@@ -32,7 +32,7 @@ steps:
         # Load Paths
         PATH="${PATH}:/node_modules/.bin:/var/cache/dotnet/tools:/usr/share/dotnet"
         # Set directory
-        DEFAULT_WORKSPACE=$(echo $PWD/$SCAN_DIR)
+        export DEFAULT_WORKSPACE=$(echo $PWD/$SCAN_DIR)
         echo Scanning $DEFAULT_WORKSPACE
         # Run Linter
         bash /action/lib/linter.sh
