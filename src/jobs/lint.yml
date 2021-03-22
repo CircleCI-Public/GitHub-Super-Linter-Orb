@@ -34,6 +34,8 @@ steps:
         # Set directory
         export DEFAULT_WORKSPACE=$(echo $PWD/$SCAN_DIR)
         echo Scanning $DEFAULT_WORKSPACE
+        # Create report directory
+        mkdir $PWD/$SCAN_DIR/super-linter.report
         # Run Linter
         bash /action/lib/linter.sh
         # Copy reports
