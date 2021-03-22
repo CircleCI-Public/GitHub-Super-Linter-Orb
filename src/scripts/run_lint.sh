@@ -3,8 +3,8 @@ PATH="${PATH}:/node_modules/.bin:/var/cache/dotnet/tools:/usr/share/dotnet"
 # Set directory
 DEFAULT_WORKSPACE=$(echo "$PWD/$SCAN_DIR")
 export DEFAULT_WORKSPACE
-# Create report directory
-mkdir "$PWD/$SCAN_DIR/super-linter.report"
+# Create artifact directory
+mkdir -p "/tmp/artifacts/test_results" "/tmp/test_results"
 # Run Linter
 set +e
 bash /action/lib/linter.sh
