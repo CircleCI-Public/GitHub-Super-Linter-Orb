@@ -13,17 +13,13 @@ parameters:
     description: |
       Pick a specific github/super-linter tag:
       https://hub.docker.com/r/github/super-linter/tags
-  dir:
-    description: The directory to scan. By default the working directory will be used.
-    type: string
-    default: "$CIRCLE_WORKING_DIRECTORY"
 
 environment:
   RUN_LOCAL: true
-  DEFAULT_WORKSPACE: <<parameters.dir>>
 
 steps:
-  - checkout
+  - checkout:
+      path: /tmp/lint
   - run:
       name: GitHub Super-Linter
       command: |
