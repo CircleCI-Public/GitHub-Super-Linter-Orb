@@ -37,5 +37,5 @@ steps:
         echo Scanning $DEFAULT_WORKSPACE
         # Run Linter
         bash /action/lib/linter.sh
-  - save_artifacts:
+  - store_artifacts:
       path: /tmp/super-linter.report
