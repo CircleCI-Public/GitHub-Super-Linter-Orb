@@ -6,7 +6,9 @@ export DEFAULT_WORKSPACE
 # Create report directory
 mkdir "$PWD/$SCAN_DIR/super-linter.report"
 # Run Linter
+set +e
 bash /action/lib/linter.sh
+set -e
 # Copy reports for artifacts
 cp -R "$PWD/$SCAN_DIR/super-linter.report" /tmp/artifacts/reports
 # Convert reports to JUNIT
