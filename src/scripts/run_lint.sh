@@ -19,5 +19,5 @@ for f in $FILES
 do
     FILENAME=$(basename "$f")
     echo "Converting file: $FILENAME from $f"
-    tap-junit -o /tmp/test_results -n "$FILENAME" -s "$FILENAME" -i "$f"
+    tap-junit -o /tmp/test_results -n "$FILENAME" -i "$FILENAME"
 done
