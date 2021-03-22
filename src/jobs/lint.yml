@@ -18,12 +18,16 @@ parameters:
     type: string
     default: "$CIRCLE_WORKING_DIRECTORY"
 
+environment:
+  RUN_LOCAL: true
+  DEFAULT_WORKSPACE: <<parameters.dir>>
+
 steps:
   - checkout
   - run:
       name: GitHub Super-Linter
       command: |
-        RUN_LOCAL=true
-        DEFAULT_WORKSPACE=<<parameters.dir>>
+        # Load Paths
         PATH="${PATH}:/node_modules/.bin:/var/cache/dotnet/tools:/usr/share/dotnet"
+        # Run Linter
         bash /action/lib/linter.sh
