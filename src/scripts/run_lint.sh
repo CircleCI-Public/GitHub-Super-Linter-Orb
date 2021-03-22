@@ -1,14 +1,15 @@
 # Load Paths
 PATH="${PATH}:/node_modules/.bin:/var/cache/dotnet/tools:/usr/share/dotnet"
 # Set directory
-export DEFAULT_WORKSPACE=$(echo $PWD/$SCAN_DIR)
+DEFAULT_WORKSPACE=$(echo "$PWD/$SCAN_DIR")
+export DEFAULT_WORKSPACE
 echo Scanning $DEFAULT_WORKSPACE
 # Create report directory
-mkdir $PWD/$SCAN_DIR/super-linter.report
+mkdir "$PWD/$SCAN_DIR/super-linter.report"
 # Run Linter
 bash /action/lib/linter.sh
 # Copy reports for artifacts
-cp -R $PWD/$SCAN_DIR/super-linter.report /tmp/super-linter.report
+cp -R "$PWD/$SCAN_DIR/super-linter.report" /tmp/super-linter.report
 # Convert reports to JUNIT
 npm install -g tap-junit
 FILES=/tmp/super-linter.report/*
