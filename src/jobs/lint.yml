@@ -13,17 +13,26 @@ parameters:
     description: |
       Pick a specific github/super-linter tag:
       https://hub.docker.com/r/github/super-linter/tags
+  scan-dir:
+    type: string
+    default: "."
+    description: The relative path in your project to the directory to be linted. By default, all files will be linted.
 
 environment:
   RUN_LOCAL: true
+  SCAN_DIR: <<parameters.scan-dir>>
+
+working_directory: /tmp/lint
 
 steps:
-  - checkout:
-      path: /tmp/lint
+  - checkout
   - run:
       name: GitHub Super-Linter
       command: |
         # Load Paths
         PATH="${PATH}:/node_modules/.bin:/var/cache/dotnet/tools:/usr/share/dotnet"
+        # Set directory
+        DEFAULT_WORKSPACE=$(echo $PWD/$SCAN_DIR)
+        echo Scanning $DEFAULT_WORKSPACE
         # Run Linter
         bash /action/lib/linter.sh
