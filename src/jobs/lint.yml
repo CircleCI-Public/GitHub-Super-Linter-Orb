@@ -31,6 +31,6 @@ steps:
       name: GitHub Super-Linter
       command: <<include(scripts/run_lint.sh)>>
   - store_artifacts:
-      path: /tmp/super-linter.report
+      path: /tmp/artifacts/
   - store_test_results:
       path: /tmp/test_results

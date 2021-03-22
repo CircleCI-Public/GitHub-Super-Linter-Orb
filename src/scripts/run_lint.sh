@@ -8,7 +8,7 @@ mkdir "$PWD/$SCAN_DIR/super-linter.report"
 # Run Linter
 bash /action/lib/linter.sh
 # Copy reports for artifacts
-cp -R "$PWD/$SCAN_DIR/super-linter.report" /tmp/super-linter.report
+cp -R "$PWD/$SCAN_DIR/super-linter.report" /tmp/artifacts/reports
 # Convert reports to JUNIT
 echo Converting Test Results to JUNIT
 cd /tmp/super-linter.report || exit 1
@@ -22,6 +22,5 @@ do
     echo "Converting file: $FILENAME from $f"
     tap-junit -o /tmp/test_results -n "$NAME" -i "$FILE"
 done
-echo "Showing test results"
-cd /tmp/test_results
-ls
+# Copy tests for artifacts
+cp -R /tmp/test_results /tmp/artifacts/test_results
