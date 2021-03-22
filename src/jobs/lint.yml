@@ -21,7 +21,6 @@ parameters:
 environment:
   RUN_LOCAL: true
   SCAN_DIR: <<parameters.scan-dir>>
-  OUTPUT_FOLDER: /tmp/super-linter.report
 
 working_directory: /tmp/lint
 
@@ -37,5 +36,7 @@ steps:
         echo Scanning $DEFAULT_WORKSPACE
         # Run Linter
         bash /action/lib/linter.sh
+        # Copy reports
+        cp -R $PWD/$SCAN_DIR/super-linter.report /tmp/super-linter.report
   - store_artifacts:
       path: /tmp/super-linter.report
