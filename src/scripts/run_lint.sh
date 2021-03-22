@@ -16,7 +16,7 @@ echo Converting Test Results to JUNIT
 cd /tmp/artifacts/test_results || exit 1
 ls
 npm install -g tap-junit
-FILES=/tmp/super-linter.report/*
+FILES=/tmp/artifacts/test_results/*
 for f in $FILES
 do
     FILE=$(basename "$f")
