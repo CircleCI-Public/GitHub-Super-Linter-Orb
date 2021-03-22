@@ -21,6 +21,7 @@ parameters:
 environment:
   RUN_LOCAL: true
   SCAN_DIR: <<parameters.scan-dir>>
+  OUTPUT_FORMAT: tap
 
 working_directory: /tmp/lint
 
