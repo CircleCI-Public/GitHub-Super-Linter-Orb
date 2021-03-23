@@ -21,6 +21,8 @@ parameters:
 environment:
   RUN_LOCAL: true
   SCAN_DIR: <<parameters.scan-dir>>
+  OUTPUT_FORMAT: tap
+  OUTPUT_DETAILS: detailed
 
 working_directory: /tmp/lint
 
@@ -30,4 +32,4 @@ steps:
       name: GitHub Super-Linter
       command: <<include(scripts/run_lint.sh)>>
   - store_artifacts:
-      path: /tmp/artifacts/reports
+      path: /tmp/artifacts
