@@ -27,7 +27,7 @@ for f in "${FILES[@]}"
 do
     NAME=$(basename "$f" .tap)
     echo "Converting file: $NAME from $f"
-    tap-junit -o /tmp/test_results -n "$NAME" -i "$f"
+    tap-junit -o /tmp/test_results -n "$NAME" < "$f"
 done
 # Copy tests for artifacts
 cp -a /tmp/test_results/. /tmp/artifacts/test_results
