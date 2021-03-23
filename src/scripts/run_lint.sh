@@ -25,10 +25,9 @@ FILES=(/tmp/artifacts/reports/*)
 echo "Found Files: ${FILES[*]}"
 for f in "${FILES[@]}"
 do
-    FILE=$(basename "$f")
     NAME=$(basename "$f" .tap)
     echo "Converting file: $NAME from $f"
-    tap-junit -o /tmp/test_results -n "$NAME" -i "$FILE"
+    tap-junit -o /tmp/test_results -n "$NAME" -i "$f"
 done
 # Copy tests for artifacts
 cp -a /tmp/test_results/. /tmp/artifacts/test_results
