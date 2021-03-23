@@ -1,0 +1,14 @@
+description: |
+  Super-Linter supports a range of optional flags as well as two build in parameters.
+  Environment Variables: Env vars can be attached to existing jobs via CircleCI Contexts.
+usage:
+  version: 2.1
+  orbs:
+    github-super-linter: circleci/github-super-linter@1.0
+  workflows:
+    lint-code:
+      jobs:
+        - github-super-linter/lint:
+            version: "v3" # The Docker image version tag
+            scan-dir: "src" # The directory to scan
+            context: Super-Linter-Options # A CircleCI Context containing environment variables
