@@ -31,5 +31,3 @@ steps:
   - run:
       name: GitHub Super-Linter
       command: <<include(scripts/run_lint.sh)>>
-  - store_artifacts:
-      path: /tmp/artifacts
