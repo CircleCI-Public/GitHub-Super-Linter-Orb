@@ -20,6 +20,7 @@ echo "${FILES[*]}"
 echo "${#FILES[@]} files found"
 for f in "${FILES[@]}"
 do
+    set +e
     NAME=$(basename "$f" .tap)
     echo "Converting file: $NAME from $f"
     tap-junit -o /tmp/artifacts/test_results -n "$NAME" -s "$NAME" -c "$NAME" < "$f"
