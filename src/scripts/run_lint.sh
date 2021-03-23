@@ -12,8 +12,8 @@ set -e
 # Copy reports for artifacts
 echo "State of /tmp/artifacts/reports before copy: "
 ls /tmp/artifacts/reports
-cp "$PWD/$SCAN_DIR/super-linter.report" /tmp/artifacts/reports
-echo "State of /tmp/artifacts/reports after copy: "
+cp -a "$PWD/$SCAN_DIR/super-linter.report/." /tmp/artifacts/reports
+echo "State of /tmp/artifacts/reports after copy:"
 ls /tmp/artifacts/reports
 # Convert reports to JUNIT
 echo Converting Test Results to JUNIT
@@ -31,4 +31,4 @@ do
     tap-junit -o /tmp/test_results -n "$NAME" -i "$FILE"
 done
 # Copy tests for artifacts
-cp /tmp/test_results /tmp/artifacts/test_results
+cp -a /tmp/test_results/. /tmp/artifacts/test_results
