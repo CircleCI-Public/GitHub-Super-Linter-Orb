@@ -1,0 +1,8 @@
+my_key: "value"
+my_list:
+  - 1
+  - 2
+  - *-
+my_dictionary:
+  key1: "value"
+  key2: "value"
