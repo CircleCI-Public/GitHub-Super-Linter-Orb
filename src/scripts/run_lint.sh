@@ -14,14 +14,16 @@ cp -R "$PWD/$SCAN_DIR/super-linter.report" /tmp/artifacts/reports
 # Convert reports to JUNIT
 echo Converting Test Results to JUNIT
 cd /tmp/artifacts/test_results || exit 1
+echo "Test Result Files:"
 ls
+echo Installing tap-junit
 npm install -g tap-junit
-FILES=/tmp/artifacts/test_results/*
-for f in $FILES
+FILES=(/tmp/artifacts/test_results/*)
+for f in "${FILES[@]}"
 do
     FILE=$(basename "$f")
     NAME=$(basename "$f" .tap)
-    echo "Converting file: $FILENAME from $f"
+    echo "Converting file: $NAME from $f"
     tap-junit -o /tmp/test_results -n "$NAME" -i "$FILE"
 done
 # Copy tests for artifacts
