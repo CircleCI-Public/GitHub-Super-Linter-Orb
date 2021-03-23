@@ -12,6 +12,6 @@ LINTER_ERROR_STATUS=$?
 # Copy reports for artifacts
 echo "Copying reports to artifacts"
 cp -a "$PWD/$SCAN_DIR/super-linter.report/." /tmp/artifacts/reports
-cp -a "$PWD/$SCAN_DIR/super-linter.log/." /tmp/artifacts/logs
+cp "$PWD/$SCAN_DIR/super-linter.log" /tmp/artifacts/logs
 # Exit with proper exit code
 exit "$LINTER_ERROR_STATUS"
