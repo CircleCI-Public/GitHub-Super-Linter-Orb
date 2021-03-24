@@ -1,0 +1,33 @@
+description: >
+  Lint your codebase with GitHub's Super-Linter.
+# What will this job do?
+# Descriptions should be short, simple, and clear.
+
+docker:
+  - image: 'github/super-linter:<<parameters.version>>'
+
+parameters:
+  version:
+    type: string
+    default: v3
+    description: |
+      Pick a specific github/super-linter tag:
+      https://hub.docker.com/r/github/super-linter/tags
+  scan-dir:
+    type: string
+    default: "."
+    description: The relative path in your project to the directory to be linted. By default, all files will be linted.
+
+environment:
+  RUN_LOCAL: true
+  SCAN_DIR: <<parameters.scan-dir>>
+  OUTPUT_FORMAT: tap
+  OUTPUT_DETAILS: detailed
+
+working_directory: /tmp/lint
+
+steps:
+  - checkout
+  - run:
+      name: GitHub Super-Linter
+      command: <<include(scripts/run_lint.sh)>>
