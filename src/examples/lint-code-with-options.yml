@@ -9,6 +9,6 @@ usage:
     lint-code:
       jobs:
         - github-super-linter/lint:
-            version: "v3" # The Docker image version tag
+            version: "v4" # The Docker image version tag
             scan-dir: "src" # The directory to scan
             context: Super-Linter-Options # A CircleCI Context containing environment variables

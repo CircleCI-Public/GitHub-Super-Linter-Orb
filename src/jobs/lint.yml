@@ -9,7 +9,7 @@ docker:
 parameters:
   version:
     type: string
-    default: v3
+    default: v4
     description: |
       Pick a specific github/super-linter tag:
       https://hub.docker.com/r/github/super-linter/tags
