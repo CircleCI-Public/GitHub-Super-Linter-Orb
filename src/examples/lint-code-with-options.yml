@@ -6,7 +6,7 @@ usage:
   orbs:
     github-super-linter: circleci/github-super-linter@1.0
   workflows:
-    lint-code:
+    lint-code-with-options:
       jobs:
         - github-super-linter/lint:
             version: "v4" # The Docker image version tag
