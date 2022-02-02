@@ -6,9 +6,9 @@ usage:
   orbs:
     github-super-linter: circleci/github-super-linter@1.0
   workflows:
-    lint-code:
+    lint-code-with-options:
       jobs:
         - github-super-linter/lint:
-            version: "v3" # The Docker image version tag
+            version: "v4" # The Docker image version tag
             scan-dir: "src" # The directory to scan
             context: Super-Linter-Options # A CircleCI Context containing environment variables
