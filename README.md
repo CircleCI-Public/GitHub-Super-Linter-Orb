@@ -10,7 +10,7 @@ Simply add the `github-super-linter/lint` job to your new or existing config.
 ```yaml
 version: 2.1
 orbs:
-    github-super-linter: circleci/github-super-linter@1.0
+    github-super-linter: circleci/github-super-linter@1.0.1
 workflows:
     lint-code:
         jobs:
